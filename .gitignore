@@ -1,0 +1,8 @@
+# macOS
+.DS_store
+
+# VS Code settings
+.vs_code
+
+# node modules (use npm ci in terminal to install the files based on package-lock.json)
+node_modules/

@@ -1,40 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My custom Bulma website</title>
-    <link rel="stylesheet" href="css/mystyles.css">
-  </head>
-  <body>
-     <h1 class="title">
-        Bulma
-      </h1>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
 
-      <p class="subtitle">
-        Modern CSS framework based on <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a>
-      </p>
+      <!-- USEFUL IDS -->
+      <!-- mobile-menu: the hamburger menu for the mobile version of the navbar -->
+      <!-- how-to-use: the instructions card (visible when first loaded) -->
+      <!-- main-image: the container for the image (or background video when first loaded) -->
+      <!-- control-bar: the section housing the timer and generate/new image buttons -->
+      <!-- set-timer: the set timer button -->
+      <!-- time: the time set/counting down (default display is 00:00) -->
+      <!-- gen-image: the generate image button (should switch to say "new image" when in use) -->
+      <!-- photo-credit: where photo credit info should be pulled if possible (has our copyright when first loaded) -->
 
-      <div class="field">
-        <div class="control">
-          <input class="input" type="text" placeholder="Input">
-        </div>
-      </div>
+      <main class="flex flex-col h-screen">
 
-      <div class="field">
-        <p class="control">
-          <span class="select">
-            <select>
-              <option>Select dropdown</option>
-            </select>
-          </span>
-        </p>
-      </div>
+        <!-- NAVIGATION -->
+        <nav class="bg-emerald-800">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+              <div class="relative flex h-16 items-center justify-between">
 
-      <div class="buttons">
-        <a class="button is-primary">Primary</a>
-        <a class="button is-link">Link</a>
-      </div>
-  </body>
+                <!-- logo text -->
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex flex-shrink-0 items-center">
+                        <a href="#" class="text-white hover:text-sky-200 px-1 text-2xl font-medium" aria-current="page">Arti<span class="text-sky-200 hover:text-white">Scapes</span></a>
+                    </div>
+                </div>
+
+                <!-- mobile menu button-->
+                <div class="absolute inset-y-0 right-0 flex items-center sm:hidden" onclick="menuToggle()">
+                  <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <!--
+                      Icon when menu is closed.
+                      Heroicon name: outline/bars-3
+                      Menu open: "hidden", Menu closed: "block"
+                    -->
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                    <!--
+                      Icon when menu is open.
+                      Heroicon name: outline/x-mark
+                      Menu open: "block", Menu closed: "hidden"
+                    -->
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- navbar buttons -->
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                          <a href="#" class="bg-emerald-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">How to Use</a>
+                          <a href="#" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></a>
+                        </div>
+                      </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="sm:hidden hidden" id="mobile-menu">
+              <div class="space-y-1 px-2 pt-2 pb-3">
+                <a href="#" class="bg-emerald-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">How to Use</a>
+                <a href="#" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></a>
+              </div>
+            </div>
+          </nav>
+        
+          <!-- MAIN CONTENT -->
+          <section class="relative h-screen flex flex-col items-center justify-between text-white py-0 px-3">
+            <!-- video -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden" id="main-image">
+              <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.webm" type="video/mp4" autoplay muted defaultMuted loop></video>
+              <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.mp4" type="video/mp4" autoplay muted defaultMuted loop></video>
+            </div>
+                
+            <!-- instructions card -->
+            <div id="how-to-use" class="z-10 m-auto">
+              <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white">
+                  <div class="bg-emerald-800 text-xl mb-2 px-6 py-2">
+                    <h1 class="text-white text-center">How to Use</h1>
+                  </div>
+                  <p class="text-emerald-800 text-base px-6 py-4">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+                  </p>
+              </div>
+
+                  
+            </div>
+            <!-- CONTROLS AND FOOTER -->
+            <section class="flex flex-col justify-between z-10 mx-auto text-center w-full max-w-sm">
+              <div id="control-bar" class="bg-emerald-800 rounded-md mb-20 p-2 flex justify-between">
+                <!-- left buttons -->
+                <div>
+                  <button id="set-timer" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Set Timer</button>
+                  <span id="time">00:00</span>
+                </div>
+                <!-- right button -->
+                <button id="gen-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Generate Image</button>
+              </div>
+              <footer>
+                <p id="photo-credit" class="drop-shadow-custom">Copyright © <a href="https://github.com/BJThompson12/Sea-Wolves" class="underline">Sea Wolves</a> 2023</p>
+              </footer>
+            </section>
+          </section>
+
+      </main>
+
+      <!-- quick script to toggle the menu in mobile -->
+      <script>
+        function menuToggle() {
+          var x = document.getElementById("mobile-menu");
+          if (x.classList.contains("hidden")) {
+            x.classList.remove("hidden");
+          } else {
+            x.classList.add("hidden");
+          }
+        }
+      </script>
+
+    </body>
 </html>

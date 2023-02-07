@@ -2,7 +2,7 @@
 .DS_store
 
 # VS Code settings
-.vs_code
+.vscode
 
 # node modules (use npm ci in terminal to install the files based on package-lock.json)
 node_modules/

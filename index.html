@@ -82,6 +82,7 @@
           <section class="relative h-screen flex flex-col items-center justify-between text-white py-0 px-3">
             <!-- video -->
             <div class="absolute top-0 left-0 w-full h-full overflow-hidden" id="main-image">
+             
               <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.webm" type="video/mp4" autoplay muted defaultMuted loop></video>
               <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.mp4" type="video/mp4" autoplay muted defaultMuted loop></video>
             </div>
@@ -112,6 +113,7 @@
               </div>
               <footer>
                 <p id="photo-credit" class="drop-shadow-custom">Copyright © <a href="https://github.com/BJThompson12/Sea-Wolves" class="underline">Sea Wolves</a> 2023</p>
+              
               </footer>
             </section>
           </section>
@@ -119,16 +121,6 @@
       </main>
 
       <!-- quick script to toggle the menu in mobile -->
-      <script>
-        function menuToggle() {
-          var x = document.getElementById("mobile-menu");
-          if (x.classList.contains("hidden")) {
-            x.classList.remove("hidden");
-          } else {
-            x.classList.add("hidden");
-          }
-        }
-      </script>
-
+      <script src="js/script.js"></script>
     </body>
 </html>

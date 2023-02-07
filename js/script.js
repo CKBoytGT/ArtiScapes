@@ -32,6 +32,7 @@ function displayImage(imageURL, userSite, name){
    `
 }
 
+// mobile menu toggle (will rework this so it doesn't use the HTML attribute for onclick)
 function menuToggle() {
   var x = document.getElementById("mobile-menu");
   if (x.classList.contains("hidden")) {
@@ -40,3 +41,29 @@ function menuToggle() {
     x.classList.add("hidden");
   }
 }
+
+// "how to use" open and close
+const howToUseEl = document.getElementById('how-to-use');
+const howToUseBtn = document.getElementById('how-to-use-btn');
+const howToUseBtnMobile = document.getElementById('how-to-use-btn-mobile');
+const howToUseX = document.getElementById('how-to-use-x');
+
+function howToToggle() {
+  if (howToUseEl.classList.contains("hidden")) {
+    howToUseEl.classList.remove("hidden");
+    howToUseBtn.classList.add("bg-emerald-900");
+    howToUseBtnMobile.classList.add("bg-emerald-900");
+    howToUseBtn.classList.remove("hover:bg-emerald-700", "active:bg-emerald-900", "border", "border-white");
+    howToUseBtnMobile.classList.remove("hover:bg-emerald-700", "active:bg-emerald-900");
+  } else {
+    howToUseEl.classList.add("hidden");
+    howToUseBtn.classList.remove("bg-emerald-900");
+    howToUseBtnMobile.classList.remove("bg-emerald-900");
+    howToUseBtn.classList.add("hover:bg-emerald-700", "active:bg-emerald-900", "border", "border-white");
+    howToUseBtnMobile.classList.add("hover:bg-emerald-700", "active:bg-emerald-900");
+  }
+}
+
+howToUseBtn.addEventListener('click', howToToggle);
+howToUseBtnMobile.addEventListener('click', howToToggle);
+howToUseX.addEventListener('click', howToToggle);

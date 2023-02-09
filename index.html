@@ -62,7 +62,7 @@
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
                           <a href="#" class="bg-emerald-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">How to Use</a>
-                          <a href="#" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></a>
+                          <button  onclick="showNearbyPlaces()" a href="#" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Where to Paint </button>
                         </div>
                       </div>
                 </div>
@@ -73,13 +73,22 @@
             <div class="sm:hidden hidden" id="mobile-menu">
               <div class="space-y-1 px-2 pt-2 pb-3">
                 <a href="#" class="bg-emerald-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">How to Use</a>
-                <a href="#" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></a>
+                <button  onclick="showNearbyPlaces()" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Where to Paint </button>
               </div>
             </div>
           </nav>
         
           <!-- MAIN CONTENT -->
-          <section class="relative h-screen flex flex-col items-center justify-between text-white py-0 px-3">
+          <section class="relative h-screen flex flex-col items-center justify-between text-white py-0 px-3" id="main-content">
+
+            <!-- MAPS -->
+              <div class="z-10 mx-auto absolute right-0 px-3 py-2 max-w-sm rounded overflow-scroll" id="placesSideBar">
+                    <div id="map_canvas">
+                        <div id="map"></div>
+                    </div>
+                    <div id="placeList" class="text-emerald-800 text-base px-6 py-4 bg-white list-disc hidden"></div> 
+              </div>
+
             <!-- video -->
             <div class="absolute top-0 left-0 w-full h-full overflow-hidden" id="main-image">
               <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.webm" type="video/mp4" autoplay muted defaultMuted loop></video>
@@ -119,6 +128,7 @@
       </main>
 
       <!-- quick script to toggle the menu in mobile -->
+      <script src="js/script2.js"></script>
       <script>
         function menuToggle() {
           var x = document.getElementById("mobile-menu");

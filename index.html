@@ -106,12 +106,18 @@
             <section class="absolute z-10 mx-auto text-center w-full max-w-sm inset-x-0 bottom-0">
               <div id="control-bar" class="bg-emerald-800 rounded-md mb-2 md:mb-10 p-2 flex justify-between">
                 <!-- left buttons -->
-                <div>
-                  <button id="set-timer" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Set Timer</button>
-                  <span id="time">00:00</span>
-                </div>
+                <button id="gen-image" aria-label="next image" aria-controls="main-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Next Image</button>
                 <!-- right button -->
-                <button id="gen-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Generate Image</button>
+                <div>
+                  <div id="timer-area" class="inline text-white text-center">
+                    <!-- minutes -->
+                    <input id="time-minutes" class="w-5 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-center" type="number" placeholder="00">
+                    <span class="inline">:</span>
+                    <!-- seconds -->
+                    <input id="time-seconds" class="w-5 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-center" type="number" placeholder="00">
+                  </div>
+                  <button id="set-timer" aria-label="set timer" aria-controls="time" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Set Timer</button>
+                </div>
               </div>
               <footer>
                 <p id="photo-credit" class="drop-shadow-custom">Copyright © <a href="https://github.com/BJThompson12/Sea-Wolves" class="underline">Sea Wolves</a> 2023</p>

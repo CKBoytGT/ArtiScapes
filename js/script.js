@@ -5,8 +5,10 @@ const footerEl = document.getElementById('photo-credit')
 // api call 
 const unsplashUrl = 'https://api.unsplash.com/photos/random?orientation=landscape&query=nature landscape&client_id=RXClu4iq9UxSj8v52n3NqMX7OGHFk_4-8iFI4x2PlZw' 
 
-generateImgBtn.addEventListener('click', (event) =>{
-  console.log(event);
+generateImgBtn.addEventListener('click', getImage)
+
+
+function getImage(){
   fetch(unsplashUrl)
   .then(function (response) {
     return response.json();
@@ -16,7 +18,6 @@ generateImgBtn.addEventListener('click', (event) =>{
     displayImage(data.urls.regular, data.links.html, data.user.name)
   })
 }
-)
 
 function displayImage(imageURL, userSite, name){
   console.log(imageURL);
@@ -67,3 +68,39 @@ function howToToggle() {
 howToUseBtn.addEventListener('click', howToToggle);
 howToUseBtnMobile.addEventListener('click', howToToggle);
 howToUseX.addEventListener('click', howToToggle);
+
+// timer 
+// capture timer input
+let timerEl = document.getElementById('set-timer')
+let secondsEl = document.getElementById('time-seconds');
+//event listener on timer button 
+timerEl.addEventListener('click', setTime);
+// let secondsLeft 
+
+function setTime() {
+  console.log('button clicked');
+  // Sets interval in variable
+  console.log(secondsEl.value);
+  const initialTime = secondsEl.value;
+  let secondsLeft = secondsEl.value;
+  timerInterval = setInterval(function () {
+    secondsEl.value = secondsLeft;
+    secondsLeft--;
+   
+
+    if (secondsLeft <= 0) {
+      timeOver(initialTime)
+      // Stops execution of action at set interval
+      getImage();
+    }
+  }, 1000);
+}
+
+// timer ends 
+function timeOver(initialTime){
+  console.log('time is up');
+  clearInterval(timerInterval)
+  secondsEl.value = initialTime
+}
+
+// let secondsInput

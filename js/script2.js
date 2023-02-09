@@ -1,6 +1,6 @@
 //Google map/places near me API
 // Add your google map api key here
-const API_KEY = ''
+const API_KEY = googleKey;
 let map;
 let service;
 let infowindow;

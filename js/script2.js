@@ -6,22 +6,35 @@ let service;
 let infowindow;
 let isScriptInjected = false;
 
+// controls sidebar visibility
+let sidebarToggle = false;
 
+
+
+// promise: if resolved, then return position; if rejected, return error
 const getCurrentPosition = async () => {
     return new Promise( (resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
             position => resolve(position),
             error => reject(error)
-        )
-    })
-}
+        );
+    });
+};
 
 const initMap = async () => {
     document.getElementById('map_canvas').style.background = "transparent url(img/Ajax-loader.gif) no-repeat center center";
     const mapElement = document.getElementById("map");
-// Gets latitude and longitude of the users place
+    const mapsError = document.getElementById("maps-error");
+
+    // Gets latitude and longitude of the users place
     getCurrentPosition()
     .then(position => {
+
+        // if the error message is UNhidden, hide it, since the promise resolved
+        if (!mapsError.classList.contains("hidden")) {
+            mapsError.classList.add("hidden");
+        };
+
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
     
@@ -33,7 +46,8 @@ const initMap = async () => {
             center: location,
             zoom: 8,
           });
-    // objects to be returned from the API
+
+        // objects to be returned from the API
         const request = {
             location,
             query: "mountains, parks, forest",
@@ -47,8 +61,9 @@ const initMap = async () => {
             createMarker(results[i], infowindow);
           }
 
+          console.log(results);
           showList(results);
-
+          
           const placesSideBarElement = document.getElementById('placeList');
           mapElement.style.setProperty('width', `${placesSideBarElement.offsetWidth}px`, '');
           mapElement.style.setProperty('height', `${placesSideBarElement.offsetWidth}px`, ''); 
@@ -56,6 +71,13 @@ const initMap = async () => {
       });
 
       document.getElementById('map_canvas').removeAttribute('style');
+    }).catch(error => {
+        console.log(error);
+
+        // if the error message is hidden, show it, since the promise rejected
+        if (mapsError.classList.contains("hidden")) {
+            mapsError.classList.remove("hidden");
+        };
     });
 }
 
@@ -79,37 +101,47 @@ const createMarker = (place, infowindow) => {
         });
       });
 }
+
 // Displayes list of places near the user
 const showList = (places) => {
+
+    // select container div
     const placeListDiv = document.getElementById("placeList");
-    const listHeader = document.createElement("h1");
-    listHeader.innerHTML = "Nearby mountains, parks and forests";
-    listHeader.style.fontWeight = "bold";
-    listHeader.style.textDecoration = "underline"
+    // create header
+    const listHeader = document.createElement("h2");
+    listHeader.textContent = "Nearby Mountains, Parks & Forests";
+    listHeader.className = "text-md m-2 font-bold";
+
     placeListDiv.appendChild(listHeader);
 
+    // creates an ordered list
     const placeUL = document.createElement('ol');
 
+    // for each place in the array...
     places.forEach((place) => {
+        // create list item
         const placeLI = document.createElement('li');
-        const placeHeader = document.createElement('h4');
-        placeHeader.style.fontWeight = "bold";
-        placeHeader.innerHTML = place.name;
+        placeLI.className = "rounded border border-white p-1 bg-white m-2";
+        // create header
+        const placeHeader = document.createElement('a');
+        placeHeader.className = "text-md font-bold underline hover:text-sky-200 active:text-sky-200";
+        placeHeader.textContent = place.name;
+        // add google maps link
+        const placeLink = "https://www.google.com/maps/search/?api=1&query=" + place.name + "&query_place_id=" + place.place_id;
+        placeHeader.setAttribute("href", placeLink);
+        placeHeader.setAttribute("target", "_blank");
+        // create address
         const placeAddr = document.createElement('p');
-        placeAddr.innerHTML = place.formatted_address;
-        const horizontalLine = document.createElement('hr');
+        placeAddr.className = "text-sm";
+        placeAddr.textContent = place.formatted_address;
 
         placeLI.appendChild(placeHeader);
         placeLI.appendChild(placeAddr);
-        placeLI.appendChild(horizontalLine)
         placeUL.appendChild(placeLI);
     });
 
     placeListDiv.appendChild(placeUL);
-    placeListDiv.style.display = "block";
-    placeListDiv.style.maxHeight = "60vh"
-    placeListDiv.style.overflowY = "scroll";
-}
+};
 
 const showNearbyPlaces = async () => {
     if(!isScriptInjected){
@@ -118,6 +150,18 @@ const showNearbyPlaces = async () => {
         script.setAttribute('async', '');
         script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initMap`
         document.getElementsByTagName("body")[0].appendChild(script);
+        
+    }
+
+    const placesSideBarHide = document.getElementById('placesSideBar');
+
+    if (!sidebarToggle) {
+        sidebarToggle = true;
+        // generate the map only if the sidebar is being toggled on
         window.initMap = initMap;
-    }  
+        placesSideBarHide.classList.remove("hidden");
+    } else {
+        sidebarToggle = false;
+        placesSideBarHide.classList.add("hidden");
+    }
 }

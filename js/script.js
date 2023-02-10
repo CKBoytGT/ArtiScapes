@@ -70,80 +70,46 @@ howToUseBtnMobile.addEventListener('click', howToToggle);
 howToUseX.addEventListener('click', howToToggle);
 
 // timer 
-// capture timer input
+// const minutesEl = document.getElementById('time-minutes');
+let countdownEL = document.getElementById('time-minutes')
+const secondsEl = document.getElementById('time-seconds')
+
 let timerEl = document.getElementById('set-timer')
-let minutesEl = document.getElementById('time-minutes');
-let secondsEl = document.getElementById('time-seconds');
-//event listener on timer button 
-timerEl.addEventListener('click', setTime);
-// let secondsLeft 
+timerEl.addEventListener('click', updateCountdown);
+console.log(countdownEL.value);
 
-function setTime() {
-  console.log('button clicked');
-  // Sets interval in variable
-  console.log(secondsEl.value);
-  // store the initial input of time to set once the timer is up
-  const initialMinutes = minutesEl.value;
-  const initialSeconds = secondsEl.value;
-  // set the input time to a var that will be used to countdown
-  let secondsLeft = secondsEl.value;
-  let minutesLeft = minutesEl.value;
-  timerInterval = setInterval(function () {
-    secondsEl.value = secondsLeft;
-    minutesEl.value = minutesLeft;
+//setInterval(updateCountdown, 1000)
+
+function updateCountdown (){
+  console.log(countdownEL.value);
+  const initialTime = countdownEL.value
+  let time = countdownEL.value * 60;
+ timerInterval = setInterval(function() {
 
 
-    // minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
-    // secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
-    secondsLeft--;
-   
-    if (secondsLeft < 10) {
-      console.log('seconds below 10');
-      secondsLeft = '0' + secondsLeft;
-    }
-    
-  //   if (minutesLeft < 10) {
-  //     console.log('minutes below 10');
-  //     minutesLeft = '0' + minutesLeft;  
-  //  }
+  const minutes = Math.floor(time / 60)
+  let seconds = time % 60;
 
-    if (secondsLeft < 0 && minutesLeft > 0) {
-      secondsLeft = 59;
-      minutesLeft -= 1;
-      
-    }
+  countdownEL.value = minutes;
+  secondsEl.value = seconds
 
-    if (secondsLeft <= 0 && minutesLeft <= 0) {
-      timeOver(initialMinutes, initialSeconds)
-      // Stops execution of action at set interval
-      getImage();
-    }
-  }, 1000);
-}
+  //seconds = seconds < 10 ? '0' + seconds;
+  if (seconds < 10) {
+    secondsEl.value = '0' + seconds;
+  }
+  time--;
 
-// var m =0;
-// var s =0;
-// var t;
-// function start(){
-// t= setInterval(run,1000);
-// }
-// function run(){
-// document.getEl......innerHTML = s;
-// document.getEl....innerHTML = m;
-// if(m<=90){
-// m = m-1;}
-// else{
-// s=60;
-// s= s-1
-// }}
+     if (time < 0) {
+      clearInterval(timerInterval)
+       timeOver(initialTime);
+       getImage();
+     }
+   }, 1000)
+  };
 
-
-// timer ends 
-function timeOver(initialMinutes, initialSeconds){
+function timeOver(initialTime){
   console.log('time is up');
-  clearInterval(timerInterval)
-  minutesEl.value =initialMinutes
-  secondsEl.value = initialSeconds
+  console.log(initialTime);
+  countdownEL.value = initialTime;
+  
 }
-
-// let secondsInput

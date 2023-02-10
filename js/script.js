@@ -72,6 +72,7 @@ howToUseX.addEventListener('click', howToToggle);
 // timer 
 // capture timer input
 let timerEl = document.getElementById('set-timer')
+let minutesEl = document.getElementById('time-minutes');
 let secondsEl = document.getElementById('time-seconds');
 //event listener on timer button 
 timerEl.addEventListener('click', setTime);
@@ -81,26 +82,68 @@ function setTime() {
   console.log('button clicked');
   // Sets interval in variable
   console.log(secondsEl.value);
-  const initialTime = secondsEl.value;
+  // store the initial input of time to set once the timer is up
+  const initialMinutes = minutesEl.value;
+  const initialSeconds = secondsEl.value;
+  // set the input time to a var that will be used to countdown
   let secondsLeft = secondsEl.value;
+  let minutesLeft = minutesEl.value;
   timerInterval = setInterval(function () {
     secondsEl.value = secondsLeft;
+    minutesEl.value = minutesLeft;
+
+
+    // minutesLeft = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
+    // secondsLeft = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
     secondsLeft--;
    
+    if (secondsLeft < 10) {
+      console.log('seconds below 10');
+      secondsLeft = '0' + secondsLeft;
+    }
+    
+  //   if (minutesLeft < 10) {
+  //     console.log('minutes below 10');
+  //     minutesLeft = '0' + minutesLeft;  
+  //  }
 
-    if (secondsLeft <= 0) {
-      timeOver(initialTime)
+    if (secondsLeft < 0 && minutesLeft > 0) {
+      secondsLeft = 59;
+      minutesLeft -= 1;
+      
+    }
+
+    if (secondsLeft <= 0 && minutesLeft <= 0) {
+      timeOver(initialMinutes, initialSeconds)
       // Stops execution of action at set interval
       getImage();
     }
   }, 1000);
 }
 
+// var m =0;
+// var s =0;
+// var t;
+// function start(){
+// t= setInterval(run,1000);
+// }
+// function run(){
+// document.getEl......innerHTML = s;
+// document.getEl....innerHTML = m;
+// if(m<=90){
+// m = m-1;}
+// else{
+// s=60;
+// s= s-1
+// }}
+
+
 // timer ends 
-function timeOver(initialTime){
+function timeOver(initialMinutes, initialSeconds){
   console.log('time is up');
   clearInterval(timerInterval)
-  secondsEl.value = initialTime
+  minutesEl.value =initialMinutes
+  secondsEl.value = initialSeconds
 }
 
 // let secondsInput

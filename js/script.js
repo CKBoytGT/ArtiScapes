@@ -19,7 +19,7 @@ function getImage() {
 
       buildHTML(data);
     });
-}
+};
 
 function displayImage(imageURL, userSite, name) {
   console.log(imageURL);
@@ -29,11 +29,10 @@ function displayImage(imageURL, userSite, name) {
 
   mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
 
-  footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>
-   `;
-}
+  footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>`;
+};
 
-// mobile menu toggle (will rework this so it doesn't use the HTML attribute for onclick)
+// MOBILE MENU TOGGLE (will rework this so it doesn't use the HTML attribute for onclick)
 function menuToggle() {
   var x = document.getElementById('mobile-menu');
   if (x.classList.contains('hidden')) {
@@ -43,7 +42,7 @@ function menuToggle() {
   }
 }
 
-// "how to use" open and close
+// HOW TO USE TOGGLE
 const howToUseEl = document.getElementById('how-to-use');
 const howToUseBtn = document.getElementById('how-to-use-btn');
 const howToUseBtnMobile = document.getElementById('how-to-use-btn-mobile');
@@ -78,17 +77,20 @@ function howToToggle() {
       'hover:bg-emerald-700',
       'active:bg-emerald-900'
     );
-  }
-}
+  };
+};
 
 howToUseBtn.addEventListener('click', howToToggle);
 howToUseBtnMobile.addEventListener('click', howToToggle);
 howToUseX.addEventListener('click', howToToggle);
 
-// timer
+// TIMER
 // const minutesEl = document.getElementById('time-minutes');
 let countdownEL = document.getElementById('time-minutes');
 const secondsEl = document.getElementById('time-seconds');
+// for the hide UI mini-timer
+let minutesElHidden = document.getElementById('hidden-time-min');
+const secondsElHidden = document.getElementById('hidden-time-sec');
 
 let timerEl = document.getElementById('set-timer');
 timerEl.addEventListener('click', updateCountdown);
@@ -107,32 +109,34 @@ function updateCountdown() {
     countdownEL.value = minutes;
     secondsEl.value = seconds;
 
+    // for the hide UI mini-timer
+    minutesElHidden.textContent = minutes;
+    secondsElHidden.textContent = seconds;
+
     //seconds = seconds < 10 ? '0' + seconds;
     if (seconds < 10) {
       secondsEl.value = '0' + seconds;
-    }
+      secondsElHidden.textContent = '0' + seconds;
+    };
     time--;
 
     if (time < 0) {
       clearInterval(timerInterval);
       timeOver(initialTime);
       getImage();
-    }
+    };
   }, 1000);
-}
+};
 
 function timeOver(initialTime) {
-  console.log('time is up');
-  console.log(initialTime);
   countdownEL.value = initialTime;
-}
+  minutesElHidden.textContent = initialTime;
+};
 
 //Image History
 const imageHistoryEl = document.getElementById('image-history');
 const imageHistoryBtn = document.getElementById('image-history-btn');
-const imageHistoryBtnMobile = document.getElementById(
-  'image-history-btn-mobile'
-);
+const imageHistoryBtnMobile = document.getElementById('image-history-btn-mobile');
 const imageHistoryBtnX = document.getElementById('image-history-x');
 
 imageHistoryBtn.addEventListener('click', showImageHistory);
@@ -168,8 +172,8 @@ function showImageHistory() {
       'hover:bg-emerald-700',
       'active:bg-emerald-900'
     );
-  }
-}
+  };
+};
 
 function buildHTML(data) {
   console.log(data);
@@ -213,5 +217,30 @@ function buildHTML(data) {
     </a>
     </div>
     `;
-  }
-}
+  };
+};
+
+// HIDE UI
+const hideUIBtn = document.getElementById("hide-ui-btn");
+const navBar = document.getElementById("navbar");
+const controlBar = document.getElementById("control-bar");
+const hiddenTimer = document.getElementById("hidden-timer");
+let hideUIToggled = false;
+
+function hideUI() {
+  if (!hideUIToggled) {
+    hideUIToggled = true;
+    navBar.classList.add("hidden");
+    controlBar.classList.add("hidden");
+    hiddenTimer.classList.remove("hidden");
+    hideUIBtn.textContent = "Unhide UI";
+  } else {
+    hideUIToggled = false;
+    navBar.classList.remove("hidden");
+    controlBar.classList.remove("hidden");
+    hiddenTimer.classList.add("hidden");
+    hideUIBtn.textContent = "Hide UI";
+  };
+};
+
+hideUIBtn.addEventListener('click', hideUI);

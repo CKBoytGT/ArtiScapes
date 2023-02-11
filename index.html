@@ -11,16 +11,19 @@
     <body>
 
       <!-- USEFUL IDS -->
-      <!-- mobile-menu: the hamburger menu for the mobile version of the navbar -->
-      <!-- how-to-use: the instructions modal (visible when first loaded) -->
+      <!-- mobile-menu: the hamburger button and menu for the mobile version of the navbar -->
+      <!-- how-to-use: the instructions modal-->
         <!-- how-to-use-btn: the button that opens the instructions -->
         <!-- how-to-use-btn-mobile: the button that opens the instructions when the mobile menu is active -->
         <!-- how-to-use-x: the button that closes the instructions -->
+      <!-- image-history: the image history modal -->
+        <!-- image-history-btn: the button that opens the image history -->
+        <!-- image-history-btn-mobile: the button that opens the image history when the mobile menu is active -->
+        <!-- image-history-x: the button that closes the image history -->
       <!-- main-image: the container for the image (or background video when first loaded) -->
       <!-- control-bar: the section housing the timer and generate/new image buttons -->
         <!-- gen-image: the next image button -->
         <!-- set-timer: the set timer button -->
-        <!-- timer-area: where the time should be displayed. initially contains the minute and second input fields  -->
         <!-- time-minutes: the minutes input field -->
         <!-- time-seconds: the seconds display -->
       <!-- photo-credit: where photo credit info should be displayed (shows our copyright first) -->
@@ -41,23 +44,15 @@
 
                 <!-- mobile menu button-->
                 <div onclick="menuToggle()" class="absolute inset-y-0 right-0 flex items-center sm:hidden">
-                  <!-- NOTE ARIA LABELS: the aria-controls label indicates that this button controls the element with id "mobile-menu" -->
-                  <!-- the aria-expanded label stats whether the menu is open or closed and needs to be included in the JS toggle -->
                   <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
-                    <!--
-                      Icon when menu is closed.
-                      Heroicon name: outline/bars-3
-                      Menu open: "hidden", Menu closed: "block"
-                    -->
+                    <!-- icon when menu is closed. heroicon name: outline/bars-3 -->
+                    <!-- TODO: Menu open: "hidden", Menu closed: "block" -->
                     <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
-                    <!--
-                      Icon when menu is open.
-                      Heroicon name: outline/x-mark
-                      Menu open: "block", Menu closed: "hidden"
-                    -->
+                    <!-- icon when menu is open. heroicon name: outline/x-mark -->
+                    <!-- TODO: Menu open: "block", Menu closed: "hidden" -->
                     <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -68,8 +63,6 @@
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                          <!-- I think the correct label will be aria-modal and it will function like aria-expanded, needing to be set true/false by JS -->
-
                           <button id="how-to-use-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">How to Use</button>
                           <button id="image-history-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Image History</button>
                           <button onclick="showNearbyPlaces()" id="where-to-paint-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button>
@@ -79,11 +72,9 @@
               </div>
             </div>
           
-            <!-- Mobile menu, show/hide based on menu state. -->
+            <!-- mobile menu, show/hide based on menu state. -->
             <div class="sm:hidden hidden" id="mobile-menu">
               <div class="space-y-1 px-2 pt-2 pb-3">
-                <!-- NOTE ARIA LABELS: see comments about the non-mobile version -->
-
                 <button id="how-to-use-btn-mobile" aria-expanded="true" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">How to Use</button>
                 <button id="image-history-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Image History</button>
                 <button onclick="showNearbyPlaces()" id="where-to-paint-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button>
@@ -95,7 +86,7 @@
           <!-- MAIN CONTENT -->
           <section class="relative h-screen flex flex-col items-center justify-between text-white py-0 px-3">
 
-            <!-- Where to Paint -->
+            <!-- WHERE TO PAINT -->
             <div id="placesSideBar" class="bg-sky-200 text-emerald-900 z-20 fixed right-0 w-80 h-[calc(100vh-64px)] overflow-y-scroll hidden">
               <div id="maps-error" class="text-center bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 hidden" role="alert">
                 <p class="font-bold mb-1 m-2">You must have your location enabled to use this feature.</p>
@@ -113,7 +104,7 @@
             <!-- Where to Paint - Mobile -->
         
 
-            <!-- Video/Image -->
+            <!-- VIDEO/IMAGE -->
             <div class="absolute top-0 left-0 w-full h-full overflow-hidden" id="main-image" aria-label="current reference image">
               <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.webm" type="video/mp4" autoplay muted defaultMuted loop></video>
               <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.mp4" type="video/mp4" autoplay muted defaultMuted loop></video>
@@ -121,17 +112,16 @@
                   
             <!-- CONTROLS AND FOOTER -->
             <section class="absolute z-10 mx-auto text-center w-full max-w-sm inset-x-0 bottom-0">
-              <div id="control-bar" class="bg-emerald-800 rounded-md mb-2 md:mb-10 p-2 flex justify-between"> <!-- will be hidden by Hide UI -->
-                <!-- left buttons -->
+              <div id="control-bar" class="bg-emerald-800 rounded-md mb-10 p-2 flex justify-between"> <!-- will be hidden by Hide UI -->
+                <!-- left button -->
                 <button id="gen-image" aria-label="next image" aria-controls="main-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Next Image</button>
-                <!-- right button -->
-                <div>
-                  <div id="timer-area" class="inline text-white text-center">
+                <!-- right buttons -->
+                <div class="flex justify-between items-center">
+                  <div role="timer" class="mr-1 text-white text-center">
                     <!-- minutes -->
-                    <input id="time-minutes" class="w-5 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-center" type="number" placeholder="00">
-                    <span class="inline">:</span>
+                    <input id="time-minutes" type="text" placeholder="00" class="m-0 w-6 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-right">
                     <!-- seconds -->
-                    <input id="time-seconds" class="w-5 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-center" type="number" placeholder="00">
+                    :<span id="time-seconds" class="w-5 ml-1 text-white hover:text-white active:text-white text-lg text-center">00</p>
                   </div>
                   <button id="set-timer" aria-label="set timer" aria-controls="time" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Set Timer</button>
                 </div>
@@ -180,7 +170,7 @@
             </div>
           </div>
 
-          <!-- Image History Modal -->
+          <!-- IMAGE HISTORY MODAL -->
           <div id="image-history" class="hidden relative z-40" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div class="fixed inset-0 bg-gray-800 bg-opacity-75"></div>
             <div class="fixed inset-0 z-10 overflow-y-auto">
@@ -215,8 +205,8 @@
           </div>
 
           <!-- HIDE UI -->
-          <div class="absolute bottom-0 left-0">
-            <button id="hide-ui-btn" class="rounded m-2 px-2 py-1 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-sm">Hide UI</button>
+          <div class="absolute bottom-0 left-0 z-10">
+            <button id="hide-ui-btn" class="rounded ml-2 mb-2 px-2 py-1 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-sm">Hide UI</button>
             <p id="hidden-timer" class="inline text-white bg-black bg-opacity-40 px-2 py-1 hidden"><span id="hidden-time-min">00</span>:<span id="hidden-time-sec">00</span></p>
           </div>
 

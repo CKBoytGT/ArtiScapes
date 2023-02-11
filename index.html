@@ -28,7 +28,7 @@
       <main class="flex flex-col h-screen bg-emerald-900">
 
         <!-- NAVIGATION -->
-        <nav class="bg-emerald-800">
+        <nav id="navbar" class="bg-emerald-800"> <!-- will be hidden by Hide UI -->
             <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
               <div class="relative flex h-16 items-center justify-between">
 
@@ -121,7 +121,7 @@
                   
             <!-- CONTROLS AND FOOTER -->
             <section class="absolute z-10 mx-auto text-center w-full max-w-sm inset-x-0 bottom-0">
-              <div id="control-bar" class="bg-emerald-800 rounded-md mb-2 md:mb-10 p-2 flex justify-between">
+              <div id="control-bar" class="bg-emerald-800 rounded-md mb-2 md:mb-10 p-2 flex justify-between"> <!-- will be hidden by Hide UI -->
                 <!-- left buttons -->
                 <button id="gen-image" aria-label="next image" aria-controls="main-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Next Image</button>
                 <!-- right button -->
@@ -208,9 +208,16 @@
                         <a href="https://unsplash.com/photos/PHB9CK5K7js" target="_blank" ><img src="https://images.unsplash.com/photo-1505516580118-8502b2e37c44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=Mnw0MDcxNTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzYwNTE0NjA&ixlib=rb-4.0.3&q=80&w=200" alt="">
                         </a>
                       </div> -->
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- HIDE UI -->
+          <div class="absolute bottom-0 left-0">
+            <button id="hide-ui-btn" class="rounded m-2 px-2 py-1 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-sm">Hide UI</button>
+            <p id="hidden-timer" class="inline text-white bg-black bg-opacity-40 px-2 py-1 hidden"><span id="hidden-time-min">00</span>:<span id="hidden-time-sec">00</span></p>
           </div>
 
       </main>

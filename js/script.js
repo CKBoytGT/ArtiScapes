@@ -85,21 +85,23 @@ howToUseBtnMobile.addEventListener('click', howToToggle);
 howToUseX.addEventListener('click', howToToggle);
 
 // TIMER
-// const minutesEl = document.getElementById('time-minutes');
-let countdownEL = document.getElementById('time-minutes');
+const countdownEL = document.getElementById('time-minutes');
+// filter the input field to only accept digits and limit to 2 characters
+countdownEL.addEventListener('input', function() {
+  this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');
+  if (this.value.length > 2) {
+    this.value = this.value.slice(0, this.maxLength);
+  };
+});
 const secondsEl = document.getElementById('time-seconds');
 // for the hide UI mini-timer
-let minutesElHidden = document.getElementById('hidden-time-min');
+const minutesElHidden = document.getElementById('hidden-time-min');
 const secondsElHidden = document.getElementById('hidden-time-sec');
 
 let timerEl = document.getElementById('set-timer');
 timerEl.addEventListener('click', updateCountdown);
-console.log(countdownEL.value);
-
-//setInterval(updateCountdown, 1000)
 
 function updateCountdown() {
-  console.log(countdownEL.value);
   const initialTime = countdownEL.value;
   let time = countdownEL.value * 60;
   timerInterval = setInterval(function () {
@@ -107,15 +109,14 @@ function updateCountdown() {
     let seconds = time % 60;
 
     countdownEL.value = minutes;
-    secondsEl.value = seconds;
+    secondsEl.textContent = seconds;
 
     // for the hide UI mini-timer
     minutesElHidden.textContent = minutes;
     secondsElHidden.textContent = seconds;
 
-    //seconds = seconds < 10 ? '0' + seconds;
     if (seconds < 10) {
-      secondsEl.value = '0' + seconds;
+      secondsEl.textContent = '0' + seconds;
       secondsElHidden.textContent = '0' + seconds;
     };
     time--;

@@ -1,5 +1,4 @@
-//Google map/places near me API
-// Add your google map api key here
+//  Google map/places near me API
 const API_KEY = googleKey;
 let map;
 let service;
@@ -8,8 +7,6 @@ let isScriptInjected = false;
 
 // controls sidebar visibility
 let sidebarToggle = false;
-
-
 
 // promise: if resolved, then return position; if rejected, return error
 const getCurrentPosition = async () => {
@@ -146,22 +143,27 @@ const showList = (places) => {
 const showNearbyPlaces = async () => {
     if(!isScriptInjected){
         isScriptInjected = true;
-        const script = document.createElement("script");
+        const script = document.createElement('script');
         script.setAttribute('async', '');
         script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initMap`
-        document.getElementsByTagName("body")[0].appendChild(script);
-        
+        document.getElementsByTagName('body')[0].appendChild(script);
     }
 
-    const placesSideBarHide = document.getElementById('placesSideBar');
+    const placesSideBarHide = document.getElementById('where-to-paint-side');
 
     if (!sidebarToggle) {
         sidebarToggle = true;
         // generate the map only if the sidebar is being toggled on
         window.initMap = initMap;
-        placesSideBarHide.classList.remove("hidden");
+        placesSideBarHide.classList.remove('hidden');
     } else {
         sidebarToggle = false;
-        placesSideBarHide.classList.add("hidden");
+        placesSideBarHide.classList.add('hidden');
     }
-}
+};
+
+// where to paint button
+const whereToPaintBtn = document.getElementById('where-to-paint-btn');
+whereToPaintBtn.addEventListener('click', showNearbyPlaces);
+const whereToPaintBtnMobile = document.getElementById('where-to-paint-btn-mobile');
+whereToPaintBtnMobile.addEventListener('click', showNearbyPlaces);

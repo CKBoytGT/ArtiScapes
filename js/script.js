@@ -32,15 +32,28 @@ function displayImage(imageURL, userSite, name) {
   footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>`;
 };
 
-// MOBILE MENU TOGGLE (will rework this so it doesn't use the HTML attribute for onclick)
-function menuToggle() {
-  var x = document.getElementById('mobile-menu');
-  if (x.classList.contains('hidden')) {
-    x.classList.remove('hidden');
+// MOBILE MENU TOGGLE
+let menuToggled = false;
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+mobileMenuBtn.addEventListener('click', function() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileIconClosed = document.getElementById('mobile-icon-closed');
+  const mobileIconOpen = document.getElementById('mobile-icon-open');
+
+  if (!menuToggled) {
+    menuToggled = true;
+    mobileMenu.classList.remove('hidden');
+    mobileIconClosed.classList.replace('block','hidden');
+    mobileIconOpen.classList.replace('hidden', 'block');
   } else {
-    x.classList.add('hidden');
+    menuToggled = false;
+    mobileMenu.classList.add('hidden');
+    mobileIconOpen.classList.replace('block','hidden');
+    mobileIconClosed.classList.replace('hidden', 'block');
   }
-}
+});
+
 
 // HOW TO USE TOGGLE
 const howToUseEl = document.getElementById('how-to-use');

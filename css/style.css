@@ -632,6 +632,14 @@ input[type="number"]::-webkit-inner-spin-button,
   margin: 0px;
 }
 
+.m-4 {
+  margin: 1rem;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -695,6 +703,10 @@ input[type="number"]::-webkit-inner-spin-button,
   display: inline-flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .hidden {
   display: none;
 }
@@ -727,6 +739,14 @@ input[type="number"]::-webkit-inner-spin-button,
   height: calc(100vh - 214px);
 }
 
+.h-32 {
+  height: 8rem;
+}
+
+.h-24 {
+  height: 6rem;
+}
+
 .min-h-full {
   min-height: 100%;
 }
@@ -751,6 +771,10 @@ input[type="number"]::-webkit-inner-spin-button,
   width: 8rem;
 }
 
+.w-24 {
+  width: 6rem;
+}
+
 .min-w-full {
   min-width: 100%;
 }
@@ -771,8 +795,16 @@ input[type="number"]::-webkit-inner-spin-button,
   flex-shrink: 0;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
 .list-disc {
   list-style-type: disc;
+}
+
+.grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -793,6 +825,18 @@ input[type="number"]::-webkit-inner-spin-button,
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-x-4 {
@@ -840,6 +884,14 @@ input[type="number"]::-webkit-inner-spin-button,
   border-width: 1px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
+.border-2 {
+  border-width: 2px;
+}
+
 .border-t {
   border-top-width: 1px;
 }
@@ -861,6 +913,11 @@ input[type="number"]::-webkit-inner-spin-button,
 .border-emerald-700 {
   --tw-border-opacity: 1;
   border-color: rgb(4 120 87 / var(--tw-border-opacity));
+}
+
+.border-black {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
 .bg-emerald-900 {
@@ -910,9 +967,23 @@ input[type="number"]::-webkit-inner-spin-button,
   --tw-bg-opacity: 0.4;
 }
 
+.bg-center {
+  background-position: center;
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.object-fill {
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 
 .p-2 {

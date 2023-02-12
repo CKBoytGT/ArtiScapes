@@ -6,6 +6,7 @@ const footerEl = document.getElementById('photo-credit');
 const unsplashUrl =
   'https://api.unsplash.com/photos/random?orientation=landscape&query=nature landscape&client_id=RXClu4iq9UxSj8v52n3NqMX7OGHFk_4-8iFI4x2PlZw';
 
+  window.onload = buildHTML()
 generateImgBtn.addEventListener('click', getImage);
 
 function getImage() {
@@ -15,46 +16,113 @@ function getImage() {
     })
     .then(function (data) {
       console.log(data);
-      displayImage(data.urls.regular, data.links.html, data.user.name);
+      displayImage(data.urls.full, data.links.html, data.user.name);
+      addHistory(data.urls.thumb, data.links.html, data.alt_description)
+      
+    }) 
+  };
+  
+  function addHistory (thumbnail, url, alt){
+    console.log(thumbnail, url, alt);
+    
+    let recentPhotoArray =
+    JSON.parse(window.localStorage.getItem('recentPhotos')) || [];
+    
+    let newPhoto = {
+      thumbnail: thumbnail,
+      url: url,
+      alt: alt,
+    };
+    
+    // add the score to the array
+    recentPhotoArray.push(newPhoto);
+    
+    if (recentPhotoArray.length > 6) {
+      recentPhotoArray.reverse();
+      recentPhotoArray.pop();
+      recentPhotoArray.reverse();
+    }
+    // when sending to local systme must stringify and then set it
+    window.localStorage.setItem('recentPhotos', JSON.stringify(recentPhotoArray));
+    console.log(recentPhotoArray);
+    console.log(recentPhotoArray[0].alt);
+    
+    buildHTML();
+  }
+  function buildHTML() {
+    let recentPhotoArray =
+    JSON.parse(window.localStorage.getItem('recentPhotos')) || [];
+    console.log(recentPhotoArray);
+    
+    const showRecentPhotoMessage = document.getElementById('recents-container')
+      if (recentPhotoArray.length == 0) {
+        showRecentPhotoMessage.innerHTML = `
+        <p> You have No recent images to display.</p>
+        `
+        console.log('empty');
+      } else if (recentPhotoArray.length > 0){
+        console.log('you have 1 image placeholder');
 
-      buildHTML(data);
-    });
-};
+      } else {
+        console.log('you have multiple images placeholder');
+      }
 
-function displayImage(imageURL, userSite, name) {
-  console.log(imageURL);
 
-  let image = imageURL;
-  console.log(image);
-
-  mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
-
-  footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>`;
-};
-
-// MOBILE MENU TOGGLE
+        const recentPhotosEl = document.getElementById('recent-photos');
+        // clear the container
+        recentPhotosEl.innerHTML = '';
+        
+        // buiild the  thumb nails and links
+        for (let index = 0; index < recentPhotoArray.length; index++) {
+          let alt = recentPhotoArray[index].alt;
+          let thumbnail = recentPhotoArray[index].thumbnail;
+          let url = recentPhotoArray[index].url;
+          console.log(alt, thumbnail, url);
+       
+          // replace the html element with the thubmnails
+      recentPhotosEl.innerHTML += `
+      <div class=" py-1 rounded-lg">
+      <a href="${url}" target="_blank" ><img class="h-24 w-32" src=${thumbnail} alt="${alt}">
+      </a>
+      </div>
+      `;
+    };
+  };
+  
+  function displayImage(imageURL, userSite, name) {
+    console.log(imageURL);
+    
+    let image = imageURL;
+    console.log(image);
+    
+    mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
+    
+    footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>`;
+  };
+  
+  // MOBILE MENU TOGGLE
 let menuToggled = false;
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
-mobileMenuBtn.addEventListener('click', function() {
+mobileMenuBtn.addEventListener('click',   function() {
   const mobileMenu = document.getElementById('mobile-menu');
-  const mobileIconClosed = document.getElementById('mobile-icon-closed');
+    const mobileIconClosed = document.getElementById('mobile-icon-closed');
   const mobileIconOpen = document.getElementById('mobile-icon-open');
-
+  
   if (!menuToggled) {
     menuToggled = true;
     mobileMenu.classList.remove('hidden');
     mobileIconClosed.classList.replace('block','hidden');
-    mobileIconOpen.classList.replace('hidden', 'block');
-  } else {
-    menuToggled = false;
+      mobileIconOpen.classList.replace('hidden', 'block');
+    } else {
+      menuToggled = false;
     mobileMenu.classList.add('hidden');
-    mobileIconOpen.classList.replace('block','hidden');
+      mobileIconOpen.classList.replace('block','hidden');
     mobileIconClosed.classList.replace('hidden', 'block');
   }
-});
+  });
 
-
+  
 // HOW TO USE TOGGLE
 const howToUseEl = document.getElementById('how-to-use');
 const howToUseBtn = document.getElementById('how-to-use-btn');
@@ -158,6 +226,7 @@ imageHistoryBtnMobile.addEventListener('click', showImageHistory);
 imageHistoryBtnX.addEventListener('click', showImageHistory);
 
 function showImageHistory() {
+  buildHTML() 
   if (imageHistoryEl.classList.contains('hidden')) {
     imageHistoryEl.classList.remove('hidden');
     imageHistoryBtn.classList.add('bg-emerald-900');
@@ -189,50 +258,6 @@ function showImageHistory() {
   };
 };
 
-function buildHTML(data) {
-  console.log(data);
-
-  let recentPhotoArray =
-    JSON.parse(window.localStorage.getItem('recentPhotos')) || [];
-
-  let newPhoto = {
-    thumbnail: data.urls.thumb,
-    url: data.links.html,
-    alt: data.alt_description,
-  };
-
-  // add the score to the array
-  recentPhotoArray.push(newPhoto);
-
-  if (recentPhotoArray.length > 6) {
-    recentPhotoArray.reverse();
-    recentPhotoArray.pop();
-    recentPhotoArray.reverse();
-  }
-  // when sending to local systme must stringify and then set it
-  window.localStorage.setItem('recentPhotos', JSON.stringify(recentPhotoArray));
-  console.log(recentPhotoArray);
-  console.log(recentPhotoArray[0].alt);
-
-  const recentPhotosEl = document.getElementById('recent-photos');
-  // clear the container
-  recentPhotosEl.innerHTML = '';
-
-  // buiild the  thumb nails and links
-  for (let index = 0; index < recentPhotoArray.length; index++) {
-    let url = recentPhotoArray[index].url;
-    let thumbnail = recentPhotoArray[index].thumbnail;
-    let alt = recentPhotoArray[index].alt;
-
-    // replace the html element with the thubmnails
-    recentPhotosEl.innerHTML += `
-    <div class="border border-emerald-700 w-32 my-2 rounded-lg">
-    <a href="${url}" target="_blank" ><img src=${thumbnail} alt="${alt}">
-    </a>
-    </div>
-    `;
-  };
-};
 
 // HIDE UI
 const hideUIBtn = document.getElementById("hide-ui-btn");

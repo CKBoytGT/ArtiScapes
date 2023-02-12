@@ -38,22 +38,24 @@
                 <!-- logo text -->
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <a href="." class="text-white hover:text-sky-200 px-1 text-2xl font-medium" aria-current="page">Arti<span class="text-sky-200 hover:text-white">Scapes</span></a>
+                        <a href="." class="text-white hover:text-sky-200 px-1 text-2xl font-medium" aria-current="page">
+                          Arti<span class="text-sky-200 hover:text-white">Scapes</span>
+                        </a>
                     </div>
                 </div>
 
                 <!-- mobile menu button-->
-                <div onclick="menuToggle()" class="absolute inset-y-0 right-0 flex items-center sm:hidden">
-                  <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                <div id="mobile-menu-btn" class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                  <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-white hover:bg-emerald-700 hover:text-white focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <!-- icon when menu is closed. heroicon name: outline/bars-3 -->
-                    <!-- TODO: Menu open: "hidden", Menu closed: "block" -->
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <!-- menu open: "hidden", menu closed: "block" -->
+                    <svg id="mobile-icon-closed" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                     <!-- icon when menu is open. heroicon name: outline/x-mark -->
-                    <!-- TODO: Menu open: "block", Menu closed: "hidden" -->
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <!-- menu open: "block", menu closed: "hidden" -->
+                    <svg id="mobile-icon-open" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
@@ -63,9 +65,25 @@
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                          <button id="how-to-use-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">How to Use</button>
-                          <button id="image-history-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Image History</button>
-                          <button onclick="showNearbyPlaces()" id="where-to-paint-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button>
+                          <button id="how-to-use-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">
+                            How to Use
+                          </button>
+                          <button id="image-history-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">
+                            Image History
+                          </button>
+                          <button id="where-to-paint-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">
+                            Where to Paint
+                            <!-- icon when where to paint is closed. heroicon name: outline/chevron-down -->
+                            <!-- menu open: "hidden", menu closed: "inline" -->
+                            <svg id="where-to-closed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                            <!-- icon when where to paint is open. heroicon name: outline/chevron-up -->
+                            <!-- menu open: "inline", menu closed: "hidden" -->
+                            <svg id="where-to-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                            </svg>
+                          </button>
                         </div>
                       </div>
                 </div>
@@ -74,10 +92,28 @@
           
             <!-- mobile menu, show/hide based on menu state. -->
             <div class="sm:hidden hidden" id="mobile-menu">
-              <div class="space-y-1 px-2 pt-2 pb-3">
-                <button id="how-to-use-btn-mobile" aria-expanded="true" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">How to Use</button>
-                <button id="image-history-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Image History</button>
-                <button onclick="showNearbyPlaces()" id="where-to-paint-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">Where to Paint <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button>
+              <div class="space-y-1 px-2 pt-2 pb-3 text-center">
+                <ul>
+                  <li id="how-to-use-btn-mobile" aria-expanded="true" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">
+                    How to Use
+                  </li>
+                  <li id="image-history-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">
+                    Image History
+                  </li>
+                  <li id="where-to-paint-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">
+                    Where to Paint
+                    <!-- icon when where to paint is closed. heroicon name: outline/chevron-down -->
+                    <!-- menu open: "hidden", menu closed: "inline" -->
+                    <svg id="where-to-closed-mobile" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                    <!-- icon when where to paint is open. heroicon name: outline/chevron-up -->
+                    <!-- menu open: "inline", menu closed: "hidden" -->
+                    <svg id="where-to-open-mobile" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                    </svg>
+                  </li>
+                </ul>
               </div>
             </div>
           </nav>
@@ -86,23 +122,25 @@
           <!-- MAIN CONTENT -->
           <section class="relative h-screen flex flex-col items-center justify-between text-white py-0 px-3">
 
+            
+
             <!-- WHERE TO PAINT -->
-            <div id="placesSideBar" class="bg-sky-200 text-emerald-900 z-20 fixed right-0 w-80 h-[calc(100vh-64px)] overflow-y-scroll hidden">
+            <div id="where-to-paint-side" class="bg-sky-200 text-emerald-900 z-20 fixed right-0 w-full sm:w-80 h-[calc(100vh-64px)] overflow-y-scroll hidden">
               <div id="maps-error" class="text-center bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3 hidden" role="alert">
-                <p class="font-bold mb-1 m-2">You must have your location enabled to use this feature.</p>
-                <p class="text-sm">Please refresh the page and allow access.</p>
+                <p class="font-bold m-2">
+                  You must have your location enabled to use this feature.
+                </p>
+                <p class="text-sm">
+                  Please refresh the page and allow access.
+                </p>
               </div>
               <div class="flex flex-col">
-              <div id="map_canvas">
-                <div id="map"></div>
-              </div>
-              <div id="placeList">
-              </div>
+                <div id="map_canvas">
+                  <div id="map"></div>
+                </div>
+                <div id="placeList"></div>
               </div>
             </div>
-
-            <!-- Where to Paint - Mobile -->
-        
 
             <!-- VIDEO/IMAGE -->
             <div class="absolute top-0 left-0 w-full h-full overflow-hidden" id="main-image" aria-label="current reference image">
@@ -114,20 +152,26 @@
             <section class="absolute z-10 mx-auto text-center w-full max-w-sm inset-x-0 bottom-0">
               <div id="control-bar" class="bg-emerald-800 rounded-md mb-10 p-2 flex justify-between"> <!-- will be hidden by Hide UI -->
                 <!-- left button -->
-                <button id="gen-image" aria-label="next image" aria-controls="main-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Next Image</button>
+                <button id="gen-image" aria-label="next image" aria-controls="main-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">
+                  Next Image
+                </button>
                 <!-- right buttons -->
                 <div class="flex justify-between items-center">
                   <div role="timer" class="mr-1 text-white text-center">
                     <!-- minutes -->
                     <input id="time-minutes" type="text" placeholder="00" class="m-0 w-6 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-right">
                     <!-- seconds -->
-                    :<span id="time-seconds" class="w-5 ml-1 text-white hover:text-white active:text-white text-lg text-center">00</p>
+                    :<span id="time-seconds" class="w-5 ml-1 text-white hover:text-white active:text-white text-lg text-center">00</span>
                   </div>
-                  <button id="set-timer" aria-label="set timer" aria-controls="time" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">Set Timer</button>
+                  <button id="set-timer" aria-label="set timer" aria-controls="time" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">
+                    Set Timer
+                  </button>
                 </div>
               </div>
               <footer>
-                <p id="photo-credit" class="drop-shadow-custom">Copyright © <a href="https://github.com/BJThompson12/Sea-Wolves" class="underline">Sea Wolves</a> 2023</p>
+                <p id="photo-credit" class="drop-shadow-custom">
+                  Copyright © <a href="https://github.com/BJThompson12/Sea-Wolves" class="underline">Sea Wolves</a> 2023
+                </p>
               </footer>
             </section>
           </section>
@@ -193,9 +237,9 @@
                         </div>
                       </div>
                     </div>
-                    <div id="recents-container" class="py-2"> </div>
-                        <div id="recent-photos" class="flex flex-wrap gap-1 justify-center"></div>
-                    </div>
+                    <div id="recents-container" class="py-2"></div>
+                    <div id="recent-photos" class="flex flex-wrap gap-1 justify-center"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -203,8 +247,12 @@
 
           <!-- HIDE UI -->
           <div class="absolute bottom-0 left-0 z-10">
-            <button id="hide-ui-btn" class="rounded ml-2 mb-2 px-2 py-1 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-sm">Hide UI</button>
-            <p id="hidden-timer" class="inline text-white bg-black bg-opacity-40 px-2 py-1 hidden"><span id="hidden-time-min">00</span>:<span id="hidden-time-sec">00</span></p>
+            <button id="hide-ui-btn" class="rounded ml-2 mb-2 px-2 py-1 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-sm">
+              Hide UI
+            </button>
+            <p id="hidden-timer" class="text-white bg-black bg-opacity-40 px-2 py-1 hidden">
+              <span id="hidden-time-min">00</span>:<span id="hidden-time-sec">00</span>
+            </p>
           </div>
 
       </main>

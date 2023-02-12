@@ -100,7 +100,7 @@ function getImage() {
     footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>`;
   };
   
-  // MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE
 let menuToggled = false;
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
@@ -260,25 +260,25 @@ function showImageHistory() {
 
 
 // HIDE UI
-const hideUIBtn = document.getElementById("hide-ui-btn");
-const navBar = document.getElementById("navbar");
-const controlBar = document.getElementById("control-bar");
-const hiddenTimer = document.getElementById("hidden-timer");
+const hideUIBtn = document.getElementById('hide-ui-btn');
+const navBar = document.getElementById('navbar');
+const controlBar = document.getElementById('control-bar');
+const hiddenTimer = document.getElementById('hidden-timer');
 let hideUIToggled = false;
 
 function hideUI() {
   if (!hideUIToggled) {
     hideUIToggled = true;
-    navBar.classList.add("hidden");
-    controlBar.classList.add("hidden");
-    hiddenTimer.classList.remove("hidden");
-    hideUIBtn.textContent = "Unhide UI";
+    navBar.classList.add('hidden');
+    controlBar.classList.add('hidden');
+    hiddenTimer.classList.replace('hidden', 'inline');
+    hideUIBtn.textContent = 'Unhide UI';
   } else {
     hideUIToggled = false;
-    navBar.classList.remove("hidden");
-    controlBar.classList.remove("hidden");
-    hiddenTimer.classList.add("hidden");
-    hideUIBtn.textContent = "Hide UI";
+    navBar.classList.remove('hidden');
+    controlBar.classList.remove('hidden');
+    hiddenTimer.classList.replace('inline', 'hidden');
+    hideUIBtn.textContent = 'Hide UI';
   };
 };
 

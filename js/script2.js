@@ -147,18 +147,31 @@ const showNearbyPlaces = async () => {
         script.setAttribute('async', '');
         script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initMap`
         document.getElementsByTagName('body')[0].appendChild(script);
+        window.initMap = initMap;
     }
 
-    const placesSideBarHide = document.getElementById('where-to-paint-side');
+    // sidebar
+    const whereToPaint = document.getElementById('where-to-paint-side');
+    // chevron icon on button - open and closed states
+    const whereToPaintClose = document.getElementById('where-to-closed');
+    const whereToPaintCloseMobile = document.getElementById('where-to-closed-mobile');
+    const whereToPaintOpen = document.getElementById('where-to-open');
+    const whereToPaintOpenMobile = document.getElementById('where-to-open-mobile');
 
     if (!sidebarToggle) {
         sidebarToggle = true;
-        // generate the map only if the sidebar is being toggled on
-        window.initMap = initMap;
-        placesSideBarHide.classList.remove('hidden');
+        whereToPaint.classList.remove('hidden');
+        whereToPaintClose.classList.replace('inline', 'hidden');
+        whereToPaintCloseMobile.classList.replace('inline', 'hidden');
+        whereToPaintOpen.classList.replace('hidden', 'inline');
+        whereToPaintOpenMobile.classList.replace('hidden', 'inline');
     } else {
         sidebarToggle = false;
-        placesSideBarHide.classList.add('hidden');
+        whereToPaint.classList.add('hidden');
+        whereToPaintOpen.classList.replace('inline', 'hidden');
+        whereToPaintOpenMobile.classList.replace('inline', 'hidden');
+        whereToPaintClose.classList.replace('hidden', 'inline');
+        whereToPaintCloseMobile.classList.replace('hidden', 'inline');
     }
 };
 

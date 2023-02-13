@@ -646,10 +646,6 @@ video {
   margin-right: 0.25rem;
 }
 
-.ml-1 {
-  margin-left: 0.25rem;
-}
-
 .ml-auto {
   margin-left: auto;
 }
@@ -1005,10 +1001,6 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
-}
-
-.font-medium {
-  font-weight: 500;
 }
 
 .font-bold {

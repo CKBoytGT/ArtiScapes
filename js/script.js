@@ -23,7 +23,6 @@ function getImage() {
   };
   
   function addHistory (thumbnail, url, alt){
-    console.log(thumbnail, url, alt);
     
     let recentPhotoArray =
     JSON.parse(window.localStorage.getItem('recentPhotos')) || [];
@@ -57,16 +56,14 @@ function getImage() {
     const showRecentPhotoMessage = document.getElementById('recents-container')
       if (recentPhotoArray.length == 0) {
         showRecentPhotoMessage.innerHTML = `
-        <p> You have No recent images to display.</p>
+        <p> You have no recent images to display.</p>
         `
         console.log('empty');
-      } else if (recentPhotoArray.length > 0){
-        console.log('you have 1 image placeholder');
-
       } else {
-        console.log('you have multiple images placeholder');
+        showRecentPhotoMessage.innerHTML = `
+        <p> Your most recently viewed images.</p>
+        `
       }
-
 
         const recentPhotosEl = document.getElementById('recent-photos');
         // clear the container
@@ -81,8 +78,8 @@ function getImage() {
        
           // replace the html element with the thubmnails
       recentPhotosEl.innerHTML += `
-      <div class=" py-1 rounded-lg">
-      <a href="${url}" target="_blank" ><img class="h-24 w-32" src=${thumbnail} alt="${alt}">
+      <div class=" rounded-lg">
+      <a href="${url}" target="_blank" ><img class="h-24 w-40" src=${thumbnail} alt="${alt}">
       </a>
       </div>
       `;
@@ -90,10 +87,7 @@ function getImage() {
   };
   
   function displayImage(imageURL, userSite, name) {
-    console.log(imageURL);
-    
     let image = imageURL;
-    console.log(image);
     
     mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
     
@@ -257,7 +251,6 @@ function showImageHistory() {
     );
   };
 };
-
 
 // HIDE UI
 const hideUIBtn = document.getElementById('hide-ui-btn');

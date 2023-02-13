@@ -7,6 +7,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -39,7 +42,7 @@
                 <!-- logo text -->
                 <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                     <div class="flex flex-shrink-0 items-center">
-                        <a href="." class="text-white hover:text-sky-200 px-1 text-2xl font-medium" aria-current="page">
+                        <a href="." class="text-white hover:text-sky-200 px-1 text-3xl font-display" aria-current="page">
                           Arti<span class="text-sky-200 hover:text-white">Scapes</span>
                         </a>
                     </div>
@@ -66,13 +69,13 @@
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                          <button id="how-to-use-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">
+                          <button id="how-to-use-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm">
                             How to Use
                           </button>
-                          <button id="image-history-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">
+                          <button id="image-history-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm">
                             Image History
                           </button>
-                          <button id="where-to-paint-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm font-medium">
+                          <button id="where-to-paint-btn" aria-expanded="false" class="border border-white text-white hover:bg-emerald-700 px-3 active:bg-emerald-900 py-2 rounded-md text-sm">
                             Where to Paint
                             <!-- icon when where to paint is closed. heroicon name: outline/chevron-down -->
                             <!-- menu open: "hidden", menu closed: "inline" -->
@@ -95,13 +98,13 @@
             <div class="sm:hidden hidden" id="mobile-menu">
               <div class="space-y-1 px-2 pb-2 text-center">
                 <ul>
-                  <li id="how-to-use-btn-mobile" aria-expanded="true" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">
+                  <li id="how-to-use-btn-mobile" aria-expanded="true" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base">
                     How to Use
                   </li>
-                  <li id="image-history-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">
+                  <li id="image-history-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base">
                     Image History
                   </li>
-                  <li id="where-to-paint-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base font-medium">
+                  <li id="where-to-paint-btn-mobile" aria-expanded="false" class="text-white hover:bg-emerald-700 block px-3 py-2 rounded-md text-base">
                     Where to Paint
                     <!-- icon when where to paint is closed. heroicon name: outline/chevron-down -->
                     <!-- menu open: "hidden", menu closed: "inline" -->
@@ -162,7 +165,7 @@
                     <!-- minutes -->
                     <input id="time-minutes" type="text" placeholder="00" class="m-0 w-6 bg-transparent hover:bg-emerald-700 active:bg-emerald-900 placeholder-emerald-500 hover:placeholder-white active:placeholder-white text-white hover:text-white active:text-white text-lg text-right">
                     <!-- seconds -->
-                    :<span id="time-seconds" class="w-5 ml-1 text-white hover:text-white active:text-white text-lg text-center">00</span>
+                    :<span id="time-seconds" class="w-5 mx-1 text-white hover:text-white active:text-white text-lg text-center">00</span>
                   </div>
                   <button id="set-timer" aria-label="set timer" aria-controls="time" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">
                     Set Timer

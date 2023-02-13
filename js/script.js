@@ -56,12 +56,12 @@ function getImage() {
     const showRecentPhotoMessage = document.getElementById('recents-container')
       if (recentPhotoArray.length == 0) {
         showRecentPhotoMessage.innerHTML = `
-        <p> You have no recent images to display.</p>
+        <p>You have no recent images to display.</p>
         `
         console.log('empty');
       } else {
         showRecentPhotoMessage.innerHTML = `
-        <p> Your most recently viewed images.</p>
+        <p>Your most recently viewed images:</p>
         `
       }
 
@@ -91,7 +91,7 @@ function getImage() {
     
     mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
     
-    footerEl.innerHTML = `Photo By: <a href="${userSite}" target="_blank" class="underline">${name}</a>`;
+    footerEl.innerHTML = `Photo by <a href="${userSite}" target="_blank" class="underline hover:text-emerald-500">${name}</a>`;
   };
   
 // MOBILE MENU TOGGLE

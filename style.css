@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* adds a custom text-shadow for the footer */
+@layer base {
+    .text-shadow {
+      text-shadow: 2px 2px 5px #000, 2px -2px 5px #000, -2px -2px 5px #000, -2px 2px 5px #000;
+    }
+  }

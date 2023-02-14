@@ -4,17 +4,15 @@ const generateImgBtn = document.getElementById('gen-image');
 const footerEl = document.getElementById('photo-credit');
 // api call
 const unsplashUrl =
-  'https://api.unsplash.com/photos/random?orientation=landscape&query=nature landscape&client_id=RXClu4iq9UxSj8v52n3NqMX7OGHFk_4-8iFI4x2PlZw';
+  'https://api.unsplash.com/photos/random?orientation=landscape&query=nature landscape&client_id=q2jCEvi971aOZUDT7NzShhejthh62UnWkjoxMCI9DrU';
 
   window.onload = buildHTML()
 generateImgBtn.addEventListener('click', getImage);
 
 function getImage() {
-  if (timerInterval){
-
-    resetTimer();
+   // clear the time interval before getting next image
+   timeOver(timerInterval)
     
-  }
   fetch(unsplashUrl)
   .then(function (response) {
     return response.json();
@@ -188,10 +186,11 @@ const secondsElHidden = document.getElementById('hidden-time-sec');
 
 let timerEl = document.getElementById('set-timer');
 timerEl.addEventListener('click', updateCountdown);
-
+timerInterval = ''
 function updateCountdown() {
-  timerEl.classList.add('hidden')
   const initialTime = countdownEL.value;
+  if (initialTime > 0){
+    timerEl.classList.add('hidden')
   let time = countdownEL.value * 60;
   timerInterval = setInterval(function () {
     const minutes = Math.floor(time / 60);
@@ -211,17 +210,24 @@ function updateCountdown() {
     time--;
 
     if (time < 0) {
-      clearInterval(timerInterval);
-      timeOver(initialTime);
+      // pass the time interval to timeOver function
+      timeOver(timerInterval);
       getImage();
       timerEl.classList.remove('hidden')
     };
-  }, 100);
+  }, 1000);
+}
 };
 
-function timeOver(initialTime) {
-  countdownEL.value = initialTime;
-  minutesElHidden.textContent = initialTime;
+function timeOver(timerInterval) {
+  clearInterval(timerInterval);
+  timerEl.classList.remove('hidden')
+  countdownEL.value = '';
+  minutesElHidden.textContent = '00';
+  secondsEl.textContent = '00';
+  secondsElHidden.textContent = '00';
+  // countdownEL.value = initialTime;
+  // minutesElHidden.textContent = initialTime;
 };
 
 //Image History

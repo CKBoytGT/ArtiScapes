@@ -21,7 +21,7 @@ Our target audience is artists wanting to learn, teach, or improve upon landscap
 
 ## 🔗 Links
 
-deployed application        
+<a href="https://bjthompson12.github.io/Sea-Wolves/"Deplyed Application</a>       
 
 ## Screenshots
 <img width="1440" alt="Screen Shot 2023-02-13 at 7 02 57 PM" src="https://user-images.githubusercontent.com/120152523/218622138-e3b13fb0-f6aa-490a-ae8c-19ebc3487ff2.png">

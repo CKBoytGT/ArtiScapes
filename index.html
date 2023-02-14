@@ -148,13 +148,15 @@
 
             <!-- VIDEO/IMAGE -->
             <div class="absolute top-0 left-0 w-full h-full overflow-hidden" id="main-image" aria-label="current reference image">
-              <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.webm" type="video/mp4" autoplay muted defaultMuted loop></video>
-              <video class="min-w-full min-h-full absolute object-cover" src="vid/bg-video.mp4" type="video/mp4" autoplay muted defaultMuted loop></video>
+              <video class="min-w-full min-h-full absolute object-cover" autoplay="autoplay" loop="loop" muted defaultMuted playsinline preload="auto">
+                <source src="vid/bg-video.webm" type="video/webm">
+                <source src="vid/bg-video.mp4" type="video/mp4">
+              </video>
             </div>
                   
             <!-- CONTROLS AND FOOTER -->
-            <section class="absolute z-10 mx-auto text-center w-full max-w-sm inset-x-0 bottom-0">
-              <div id="control-bar" class="bg-emerald-800 rounded-md mb-10 p-2 flex justify-between"> <!-- will be hidden by Hide UI -->
+            <section class="absolute z-10 mx-auto text-center w-full inset-x-0 bottom-0">
+              <div id="control-bar" class="bg-emerald-800 max-w-sm rounded-md mx-auto mb-10 p-2 flex justify-between"> <!-- will be hidden by Hide UI -->
                 <!-- left button -->
                 <button id="gen-image" aria-label="next image" aria-controls="main-image" class="rounded-md border border-white px-2 py-1 hover:bg-emerald-700 active:bg-emerald-900">
                   Next Image
@@ -173,7 +175,7 @@
                 </div>
               </div>
               <footer>
-                <div class="text-shadow text-sm text-white">
+                <div class="text-shadow text-sm text-white w-full">
                   <p class="sm:inline">Copyright © <a href="https://github.com/BJThompson12/Sea-Wolves" class="hover:text-emerald-500 underline">Sea Wolves</a> 2023<span class="hidden sm:inline"> | </span></p><p id="photo-credit" class="sm:inline">Video by <a href="https://www.pexels.com/video/scenery-of-relaxing-farm-field-during-daytime-4471213/" target="_blank" class="hover:text-emerald-500 underline">Mike B</a></p>
                 </div>
               </footer>
@@ -252,7 +254,7 @@
           </div>
 
           <!-- HIDE UI -->
-          <div class="absolute bottom-0 left-0 z-10">
+          <div class="fixed bottom-0 left-0 z-10">
             <button id="hide-ui-btn" class="rounded ml-2 mb-2 px-2 py-1 bg-emerald-800 hover:bg-emerald-700 active:bg-emerald-900 text-white text-sm">
               Hide UI
             </button>

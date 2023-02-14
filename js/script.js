@@ -10,18 +10,31 @@ const unsplashUrl =
 generateImgBtn.addEventListener('click', getImage);
 
 function getImage() {
+  if (timerInterval){
+
+    resetTimer();
+    
+  }
   fetch(unsplashUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      displayImage(data.urls.full, data.links.html, data.user.name);
-      addHistory(data.urls.thumb, data.links.html, data.alt_description)
-      
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    displayImage(data.urls.full, data.links.html, data.user.name);
+    addHistory(data.urls.thumb, data.links.html, data.alt_description)
     }) 
   };
   
+  function resetTimer(){
+    clearInterval(timerInterval)
+    timerEl.classList.remove('hidden')
+    countdownEL.value = '';
+    minutesElHidden.textContent = '00';
+    secondsEl.textContent = '00';
+    secondsElHidden.textContent = '00';
+  }
+
   function addHistory (thumbnail, url, alt){
     
     let recentPhotoArray =
@@ -177,6 +190,7 @@ let timerEl = document.getElementById('set-timer');
 timerEl.addEventListener('click', updateCountdown);
 
 function updateCountdown() {
+  timerEl.classList.add('hidden')
   const initialTime = countdownEL.value;
   let time = countdownEL.value * 60;
   timerInterval = setInterval(function () {
@@ -200,8 +214,9 @@ function updateCountdown() {
       clearInterval(timerInterval);
       timeOver(initialTime);
       getImage();
+      timerEl.classList.remove('hidden')
     };
-  }, 1000);
+  }, 100);
 };
 
 function timeOver(initialTime) {

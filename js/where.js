@@ -58,7 +58,6 @@ const initMap = async () => {
             createMarker(results[i], infowindow);
           }
 
-          console.log(results);
           showList(results);
           
           const placesSideBarElement = document.getElementById('placeList');

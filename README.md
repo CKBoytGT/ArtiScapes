@@ -21,7 +21,7 @@ ArtiScapes is a web app for landscape painting practice that saves artists time 
 ## Screenshots
 <div align="center>
 
-![Screenshot: Starting page](https://user-images.githubusercontent.com/118075006/224526853-c1004691-a518-412b-9e39-b15c0562d3dc.jpg)
+![Screenshot: Starting page](https://user-images.githubusercontent.com/118075006/224527681-40a3aebb-88c4-49ce-8689-945d93cbc3ae.jpg)
 ![Screenshot: Hide UI](https://user-images.githubusercontent.com/118075006/224526863-22f5e52e-6085-4f40-89e9-6b956080e61e.jpg)
 ![Screenshot: Where to Paint](https://user-images.githubusercontent.com/118075006/224527120-7b5660bd-2138-45b2-8a02-7363cce74cd9.jpg)
 ![Screenshot: Image History](https://user-images.githubusercontent.com/118075006/224527324-d3797034-67f3-4947-ae2f-cf4bd664f8d4.jpg)

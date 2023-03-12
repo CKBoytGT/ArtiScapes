@@ -1,28 +1,42 @@
-# ArtiScapes
+<div align="center">
 
-ArtiScapes is a web application that allows users to generate random, royalty-free landscape images to view for entertainment, inspiration, artistry practice and educational teaching. Potential locations to display a random high quality photo that falls under the category of “landscape.”
-Has the option to set a timer and change to a new random image once it hits 0.
-If the user gives location permission, the app provides a list of scenic areas (parks, mountains, forests, natural landmarks, etc.) within a selected range of miles.
+# ArtiScapes  
+![Badge: Tailwind CSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-Our target audience is artists wanting to learn, teach, or improve upon landscape painting.
+ArtiScapes is a web app for landscape painting practice that saves artists time and energy on researching both photo references and real-world locations. Includes helpful features like a timed painting option, a gallery of previously viewed images, and the ability to hide the user interface.
 
-## Technologies Used
-- HTML | CSS | JavaScript
-- Tailwind CSS
-- Unsplash API
-- Google Maps API
+[Try the app!](https://bjthompson12.github.io/Sea-Wolves/)
+
+[Usage](#usage) | [Screenshots](#screenshots) | [Contributing](#contributing) | [Authors](#authors) | [Links](#links)
+
+</div>
+
+## Usage
+- To view a new random landscape picture, click the Next Image button.
+- To use the timer option, input your desired time into the minutes field on the timer and click the Set Timer button. When the timer reaches zero, a new image will be provided automatically.
+- To hide the user interface (UI), click the Hide UI button in the lower left corner. Click Unhide UI to bring it back.
+- To see up to six of your most recently viewed images, click Image History. Click the thumbnail to go to that photo's page on Unsplash.
+- To find near by scenic places to paint, click Where to Paint. You must permit ArtiScapes to access your location data in order to use this feature.
+
+## Screenshots
+<div align="center>
+
+![Screenshot: Starting page](https://user-images.githubusercontent.com/118075006/224526853-c1004691-a518-412b-9e39-b15c0562d3dc.jpg)
+![Screenshot: Hide UI](https://user-images.githubusercontent.com/118075006/224526863-22f5e52e-6085-4f40-89e9-6b956080e61e.jpg)
+![Screenshot: Where to Paint](https://user-images.githubusercontent.com/118075006/224527120-7b5660bd-2138-45b2-8a02-7363cce74cd9.jpg)
+![Screenshot: Image History](https://user-images.githubusercontent.com/118075006/224527324-d3797034-67f3-4947-ae2f-cf4bd664f8d4.jpg)
+
+</div>
+
+## Contributing
+Thank you for your interest, but this project is not currently accepting contributions from authors outside of our team.
 
 ## Authors
-
 - [Brandon Thompson](https://github.com/BJThompson12)
 - [Poonam Burris](https://github.com/PoonamBurris)
 - [Christina Boyt](https://github.com/CKBoytGT)
-- [Courtney Clarke](https://github.com/nouriyin)
+- [Courtney Clarke](https://github.com/nouriyin) 
 
-## 🔗 Links
-
-<a href="https://bjthompson12.github.io/Sea-Wolves/">Deployed Application</a>       
-
-## Screenshots
-<img width="1440" alt="Screen Shot 2023-02-13 at 7 02 57 PM" src="https://user-images.githubusercontent.com/120152523/218622138-e3b13fb0-f6aa-490a-ae8c-19ebc3487ff2.png">
-
+## Links
+- [Deployed Site](https://bjthompson12.github.io/Sea-Wolves/)
+- [GitHub Repo](https://github.com/BJThompson12/Sea-Wolves/)

@@ -3,7 +3,7 @@ let mainPageEl = document.getElementById('main-image');
 const generateImgBtn = document.getElementById('gen-image');
 const footerEl = document.getElementById('photo-credit');
 // api call
-const unsplashUrl ='https://artiscapes-relay.herokuapp.com/api?orientation=landscape&query=nature landscape';
+const unsplashUrl ='http://localhost:5000/api?orientation=landscape&query=nature+landscape';
 
 window.onload = buildHTML();
 generateImgBtn.addEventListener('click', getImage);
@@ -17,7 +17,7 @@ function getImage() {
     return response.json();
   })
   .then(function (data) {
-    displayImage(data.urls.full, data.links.html, data.user.name);
+    displayImage(data.urls.raw, data.links.html, data.user.name);
     addHistory(data.urls.thumb, data.links.html, data.alt_description)
     }) 
   };
@@ -92,7 +92,7 @@ function getImage() {
   };
   
   function displayImage(imageURL, userSite, name) {
-    let image = imageURL;
+    let image = imageURL + '&w=1920&auto=format';
     
     mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
     

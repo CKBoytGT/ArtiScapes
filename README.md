@@ -36,7 +36,3 @@ Thank you for your interest, but this project is not currently accepting contrib
 - [Poonam Burris](https://github.com/PoonamBurris)
 - [Christina Boyt](https://github.com/CKBoytGT)
 - [Courtney Clarke](https://github.com/nouriyin) 
-
-## Links
-- [Deployed Site](https://bjthompson12.github.io/Sea-Wolves/)
-- [GitHub Repo](https://github.com/BJThompson12/Sea-Wolves/)

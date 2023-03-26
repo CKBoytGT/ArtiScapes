@@ -698,6 +698,10 @@ video {
   height: calc(100vh - 64px);
 }
 
+.h-80 {
+  height: 20rem;
+}
+
 .h-full {
   height: 100%;
 }
@@ -708,10 +712,6 @@ video {
 
 .h-24 {
   height: 6rem;
-}
-
-.h-80 {
-  height: 20rem;
 }
 
 .min-h-full {

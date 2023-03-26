@@ -3,7 +3,7 @@ let mainPageEl = document.getElementById('main-image');
 const generateImgBtn = document.getElementById('gen-image');
 const footerEl = document.getElementById('photo-credit');
 // api call
-const unsplashUrl ='http://localhost:5000/api?orientation=landscape&query=nature+landscape';
+const unsplashUrl ='https://artiscapes-relay.herokuapp.com/api?orientation=landscape&query=nature+landscape';
 
 window.onload = buildHTML();
 generateImgBtn.addEventListener('click', getImage);

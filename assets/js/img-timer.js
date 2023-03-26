@@ -17,8 +17,8 @@ function getImage() {
     return response.json();
   })
   .then(function (data) {
-    displayImage(data.urls.raw, data.links.html, data.user.name);
-    addHistory(data.urls.thumb, data.links.html, data.alt_description)
+    displayImage(data.urls.raw, data.user.links.html, data.user.name);
+    addHistory(data.urls.thumb, data.links.html, data.alt_description);
     }) 
   };
   
@@ -84,19 +84,16 @@ function getImage() {
       // replace the html element with the thubmnails
       recentPhotosEl.innerHTML += `
       <div class=" rounded-lg">
-      <a href="${url}" target="_blank" ><img class="h-24 w-40" src=${thumbnail} alt="${alt}">
+      <a href="${url}?utm_source=artiscapes&utm_medium=referral" target="_blank" ><img class="h-24 w-40" src=${thumbnail} alt="${alt}">
       </a>
       </div>
       `;
     };
   };
   
-  function displayImage(imageURL, userSite, name) {
-    let image = imageURL + '&w=1920&auto=format';
-    
-    mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${image}" alt=""> `;
-    
-    footerEl.innerHTML = `Photo by <a href="${userSite}" target="_blank" class="underline hover:text-emerald-500">${name}</a>`;
+  function displayImage(imageURL, authorURL, author) {
+    mainPageEl.innerHTML = `<img class="min-w-full min-h-full absolute object-cover" src="${imageURL}&w=1920&auto=format" alt=""> `;
+    footerEl.innerHTML = `<span class="hidden sm:inline"> | </span>Photo by <a href="${authorURL}?utm_source=artiscapes&utm_medium=referral" target="_blank" class="underline hover:text-emerald-500">${author}</a> on <a href="https://unsplash.com/?utm_source=artiscapes&utm_medium=referral" target="_blank" class="underline hover:text-emerald-500">Unsplash</a>`;
   };
 
 // TIMER

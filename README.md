@@ -7,7 +7,7 @@ ArtiScapes is a web app for landscape painting practice that saves artists time 
 
 [Try the app!](https://ckboytgt.github.io/ArtiScapes/)
 
-[Usage](#usage) | [Screenshots](#screenshots) | [Contributing](#contributing) | [Authors](#authors) | [Links](#links)
+[Usage](#usage) | [Screenshots](#screenshots) | [Contributing](#contributing) | [Authors](#authors)
 
 </div>
 

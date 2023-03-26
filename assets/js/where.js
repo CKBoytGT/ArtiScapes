@@ -1,5 +1,4 @@
 //  Google map/places near me API
-const API_KEY = googleKey;
 let map;
 let service;
 let infowindow;
@@ -19,7 +18,7 @@ const getCurrentPosition = async () => {
 };
 
 const initMap = async () => {
-    document.getElementById('map_canvas').style.background = "transparent url(img/Ajax-loader.gif) no-repeat center center";
+    document.getElementById('map_canvas').style.background = "transparent url(assets/img/Ajax-loader.gif) no-repeat center center";
     const mapElement = document.getElementById("map");
     const mapsError = document.getElementById("maps-error");
 
@@ -144,7 +143,7 @@ const showNearbyPlaces = async () => {
         isScriptInjected = true;
         const script = document.createElement('script');
         script.setAttribute('async', '');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places&callback=initMap`
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAmUPLJdyPE8KF8uOxxt1hNUZIDE3ZVaCE&libraries=places&callback=initMap`
         document.getElementsByTagName('body')[0].appendChild(script);
         window.initMap = initMap;
     }

@@ -143,7 +143,7 @@ const showNearbyPlaces = async () => {
         isScriptInjected = true;
         const script = document.createElement('script');
         script.setAttribute('async', '');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAmUPLJdyPE8KF8uOxxt1hNUZIDE3ZVaCE&libraries=places&callback=initMap`
+        script.src = `/api/google`
         document.getElementsByTagName('body')[0].appendChild(script);
         window.initMap = initMap;
     }

@@ -3,7 +3,7 @@ let mainPageEl = document.getElementById('main-image');
 const generateImgBtn = document.getElementById('gen-image');
 const footerEl = document.getElementById('photo-credit');
 // api call
-const unsplashUrl ='https://artiscapes-relay.herokuapp.com/api?orientation=landscape&query=nature+landscape';
+const unsplashUrl ='https://api.unsplash.com/photos/random?orientation=landscape&query=nature landscape&client_id=6iQsSQLoWYFaURYdlQMk4jRuc3C0VD3PwDTb9okcmVs';
 
 window.onload = buildHTML();
 generateImgBtn.addEventListener('click', getImage);
@@ -12,7 +12,7 @@ function getImage() {
    // clear the time interval before getting next image
    timeOver(timerInterval)
     
-  fetch(unsplashUrl)
+  fetch('/api/unsplash')
   .then(function (response) {
     return response.json();
   })

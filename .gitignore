@@ -4,8 +4,8 @@
 # VS Code settings
 .vscode/
 
-# node modules (use npm ci in terminal to install the files based on package-lock.json)
+# node modules
 node_modules/
 
-# ignore API key file
-js/key.js
+# env files
+.env

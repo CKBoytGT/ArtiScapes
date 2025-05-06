@@ -5,7 +5,7 @@
 
 ArtiScapes is a web app for landscape painting practice that saves artists time and energy on researching both photo references and real-world locations. Includes helpful features like a timed painting option, a gallery of previously viewed images, and the ability to hide the user interface.
 
-[Try the app!](https://ckboytgt.github.io/ArtiScapes/)
+[Try the app!](https://artiscapes.ckboyt.com/)
 
 [Usage](#usage) | [Screenshots](#screenshots) | [Contributing](#contributing) | [Authors](#authors)
 

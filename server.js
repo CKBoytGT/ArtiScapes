@@ -36,6 +36,6 @@ app.get("/api/unsplash", async (req, res) => {
 
 app.use(express.static(path.join(__dirname, "/public")));
 
-app.listen(3000, () => {
-  console.log("Server started on http://localhost:3000");
+app.listen(3002, () => {
+  console.log("Server started on http://localhost:3002");
 });
